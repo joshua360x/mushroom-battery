@@ -11,7 +11,7 @@ const addFriendButton = document.getElementById('add-friend-button');
 
 let mushroomCount = 3;
 
-const friendData = [
+let friendData = [
     {
         name: 'Erich',
         satisfaction: 2
@@ -35,10 +35,21 @@ addFriendButton.addEventListener('click', () => {
     // get the name from the input
     // create a new friend object
     
-    // push it into the friends state array, passed in as an argument
+    let nameInput = friendInputEl.value
 
+    let obj = 
+        {
+            name: nameInput,
+            satisfaction: (Math.ceil(Math.random() * 3))
+        }
+    // push it into the friends state array, passed in as an argument
+    friendData.push(obj)
+    console.log("🚀 ~ file: app.js ~ line 40 ~ addFriendButton.addEventListener ~ friendData", friendData)
+    
     // reset the input
+    friendInputEl.value = ''
     // display all the friends (use a function here)
+    displayFriends()
 });
 
 
@@ -56,11 +67,16 @@ addMushroomButton.addEventListener('click', () => {
 
 function displayFriends() {
     // clear out the friends in DOM
-
+    friendsEl.textContent = ''
     // for each friend in state . . .
     for (let friend of friendData) {
-        const friendEl = renderFriend(friend);
+        const friendEl = renderFriend(friend, friendData);
+        console.log("🚀 ~ file: app.js ~ line 73 ~ displayFriends ~ friendEl", friendEl)
 
+
+        friendEl.addEventListener('click', () => {
+            console.log(friend);
+        })
         // this is a clickable list, so . . .
         //     add an event listener to each friend
         //         on click, go find the clicked friend in state
@@ -71,6 +87,7 @@ function displayFriends() {
         //             then display your friends and mushrooms with the updated state
     
         // append the friendEl to the friends list in DOM
+        friendsEl.append(friendEl)
     }
     
 }
