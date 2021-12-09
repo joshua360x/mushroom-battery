@@ -22,11 +22,11 @@ let friendData = [
     },
     {
         name: 'Missael',
-        satisfaction: 3
+        satisfaction: 2
     },
     {
         name: 'Soraya',
-        satisfaction: 3
+        satisfaction: 1
     },
 ];
 
