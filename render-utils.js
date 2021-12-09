@@ -30,7 +30,7 @@ export function renderFriend(friend) {
         spanEMoji.textContent = '😁'; 
         // console.log('one works');
     }
-    if (friend.satisfaction === 3) {
+    if (friend.satisfaction >= 3) {
         spanEMoji.textContent = '😇'; 
         // console.log('three works');
     }
