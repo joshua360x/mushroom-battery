@@ -203,3 +203,9 @@ footer {
     background-repeat: no-repeat;
     background-image: url('../assets/porcini.png')
 }
+
+
+
+.pizzaParty {
+    background-color: red;
+}

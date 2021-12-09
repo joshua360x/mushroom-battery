@@ -1,6 +1,6 @@
 // import functions and grab DOM elements
 import { renderMushroom, renderFriend } from './render-utils.js';
-// import findFriendByName from './data-utils.js';
+import { confetti } from './confetti.js';
 
 const friendsEl = document.querySelector('.friends');
 const friendInputEl = document.getElementById('friend-input');
@@ -14,15 +14,15 @@ let mushroomCount = 3;
 let friendData = [
     {
         name: 'Erich',
-        satisfaction: 2
+        satisfaction: 3
     },
     {
         name: 'Sarah',
-        satisfaction: 1
+        satisfaction: 3
     },
     {
         name: 'Missael',
-        satisfaction: 1
+        satisfaction: 3
     },
     {
         name: 'Soraya',
@@ -92,10 +92,9 @@ function displayFriends() {
             displayMushrooms();
             displayFriends();
             // console.log('🚀 ~ file: app.js ~ line 94 ~ friendEl.addEventListener ~ friendEl', friendEl);
- 
- 
 
         });
+
         // this is a clickable list, so . . .
         //     add an event listener to each friend
         //         on click, go find the clicked friend in state
@@ -108,7 +107,12 @@ function displayFriends() {
         // append the friendEl to the friends list in DOM
         friendsEl.append(friendEl);
     }
+    // let pizza = 0
+
+    // if (pizza) {
     
+    // }
+    checkMaxSatisfaction(friendData);
 }
 
 
@@ -122,6 +126,38 @@ function displayMushrooms() {
         mushroomsEl.append(renderMushroom());
     }
 }
+const start = () => {
+    setTimeout(function() {
+        confetti.start();
+    }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+};
+
+//  for stopping the confetti 
+
+const stop = () => {
+    setTimeout(function() {
+        confetti.stop();
+    }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+};
+
+
+function checkMaxSatisfaction(friendData) {
+    let counter = 0;
+    for (let i = 0; i < friendData.length; i++) {
+        let el = friendData[i].satisfaction;
+        counter = counter + el;
+        // elMax = 3*friendData.length
+    //     console.log("🚀 ~ file: app.js ~ line 99 ~ displayFriends ~ el", el)
+
+    }
+    if (counter === friendData.length * 3) {
+        //    pizza = 1
+        start();
+        stop();
+        // console.log('we did it');
+    }
+}
+
 
 displayFriends();
 displayMushrooms();
