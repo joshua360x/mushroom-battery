@@ -14,11 +14,11 @@ let mushroomCount = 3;
 let friendData = [
     {
         name: 'Erich',
-        satisfaction: 3
+        satisfaction: 1
     },
     {
         name: 'Sarah',
-        satisfaction: 3
+        satisfaction: 1
     },
     {
         name: 'Missael',
@@ -76,14 +76,29 @@ function displayFriends() {
 
         friendEl.addEventListener('click', () => {
             // console.log(friend);
+            if (friend.satisfaction >= 3) {
+                alert(`${friend.name} is happy and is satisfied go share the mushrooms with others`);
+                // console.log(friend.satisfaction);
+            }
+            
             if (friend.satisfaction < 3) {
-                friend.satisfaction++;
-                mushroomCount--;
+                if (mushroomCount > 0) {
+                    mushroomCount--;
+                    friend.satisfaction++;
+                } 
+
+                // if (friend.satisfaction >= 3) {
+                //     alert(`${friend.name} is happy and is satisfied go share the mushrooms with others`);
+                //     // console.log(friend.satisfaction);
+                // }
+
+                if (mushroomCount === 0) {
+                    alert('Please go out and find more mushrooms');
+                    // console.log(friend.satisfaction);
+                } 
                 // console.log(friend);
             }
-            if (friend.satisfaction === 3) {
-                alert(`${friend.name} is happy`);
-            }
+
             // switch (friend.satisfaction) {
             //     case (friend.satisfaction <= 3):
             //         friend.satisfaction++
