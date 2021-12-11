@@ -35,12 +35,13 @@ addFriendButton.addEventListener('click', () => {
     // get the name from the input
     // create a new friend object
     
-    let nameInput = friendInputEl.value;
+    let nameInput = friendInputEl.value === true ? friendInputEl.value : 'Friend#' + Math.ceil(Math.random() * 100);
+ 
 
     let obj = 
         {
             name: nameInput,
-            satisfaction: (Math.ceil(Math.random() * 3))
+            satisfaction: (Math.ceil(Math.random() * 2))
         };
     // push it into the friends state array, passed in as an argument
     friendData.push(obj);
@@ -80,7 +81,7 @@ function displayFriends() {
                 alert(`${friend.name} is happy and is satisfied go share the mushrooms with others`);
                 // console.log(friend.satisfaction);
             }
-            
+
             if (friend.satisfaction < 3) {
                 if (mushroomCount > 0) {
                     mushroomCount--;
